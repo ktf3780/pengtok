@@ -26,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button login;
     private Button signup;
+    private Button findId;
+    private Button findPw;
     private FirebaseRemoteConfig firebaseRemoteConfig;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -48,9 +50,14 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.loginActivity_edittext_password);
 
         login = findViewById(R.id.loginActivity_button_login);
-        signup = findViewById(R.id.loginActivity_button_signup);
+        signup = findViewById(R.id.loginActivity_button_signUp);
+        findId = findViewById(R.id.loginActivity_button_findId);
+        findPw = findViewById(R.id.loginActivity_button_findPw);
+
         login.setBackgroundColor(Color.parseColor(splash_background));
         signup.setBackgroundColor(Color.parseColor(splash_background));
+        findId.setBackgroundColor(Color.parseColor(splash_background));
+        findPw.setBackgroundColor(Color.parseColor(splash_background));
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +74,23 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+        findId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, FindIdActivity.class));
+            }
+        });
+
+        findPw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, FindPwActivity.class));
+            }
+        });
+
+
         //로그인 인터페이스 리스너
         authStateListener = new FirebaseAuth.AuthStateListener() {
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -77,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
+                    Toast.makeText(LoginActivity.this, "로그인이 성공적으로 되었습니다.",Toast.LENGTH_SHORT).show();
 
                 }else { //로그아웃
 
@@ -91,6 +113,9 @@ public class LoginActivity extends AppCompatActivity {
                 //로그인 완료되면 성공적으로 되었는지 확인시켜줌.
                 if(!task.isSuccessful()) { //로그인 실패했을 경우
                     Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "아이디와 비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(LoginActivity.this, "로그인이 성공적으로 되었습니다.",Toast.LENGTH_SHORT).show();
                 }
             }
         });
