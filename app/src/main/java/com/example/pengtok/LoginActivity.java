@@ -26,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button login;
     private Button signup;
+    private Button findId;
+    private Button findPw;
     private FirebaseRemoteConfig firebaseRemoteConfig;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -48,9 +50,14 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.loginActivity_edittext_password);
 
         login = findViewById(R.id.loginActivity_button_login);
-        signup = findViewById(R.id.loginActivity_button_signup);
+        signup = findViewById(R.id.loginActivity_button_signUp);
+        findId = findViewById(R.id.loginActivity_button_findId);
+        findPw = findViewById(R.id.loginActivity_button_findPw);
+
         login.setBackgroundColor(Color.parseColor(splash_background));
         signup.setBackgroundColor(Color.parseColor(splash_background));
+        findId.setBackgroundColor(Color.parseColor(splash_background));
+        findPw.setBackgroundColor(Color.parseColor(splash_background));
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +70,21 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+        });
+
+
+        findId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, FindIdActivity.class));
+            }
+        });
+
+        findPw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, FindPwActivity.class));
             }
         });
 
