@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
     private List<ChatData> mDataset;
-    private String myNickName;
+    private String destinationUid;
 
     /*private static View.OnClickListener onClickListener;
     // Provide a reference to the views for each data item
@@ -37,6 +37,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         public LinearLayout linearLayout_main;
 
 
+
         public MyViewHolder(View v) {
             super(v);
             TextView_nickname = v.findViewById(R.id.TextView_nickname);
@@ -48,8 +49,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         }
 
         public void setItem(ChatData chat) {
-            TextView_nickname.setText(chat.getNickname());
+            TextView_nickname.setText(chat.getDestinationUid());
             TextView_msg.setText(chat.getMsg());
+
 
             long mNow = System.currentTimeMillis();
             Date mDate = new Date(mNow);
@@ -61,9 +63,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ChatAdapter(List<ChatData> myDataset, Context context, String myNickName) {//제일처음 가져오는곳
+    public ChatAdapter(List<ChatData> myDataset, Context context, String destinationUid) {//제일처음 가져오는곳
         mDataset = myDataset;
-        this.myNickName = myNickName;
+        this.destinationUid = destinationUid;
     }
 
     // Create new views (invoked by the layout manager)
@@ -91,8 +93,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
 
         Log.d("채팅확인", chat.toString());
         //내가 보낸 메세지
-        if (chat.getNickname().equals(this.myNickName)) {
-            /*holder.TextView_msg.setGravity(Gravity.RIGHT);*/
+        /*    if (chat.getDestinationUid().equals(this.destinationUid)) {
+         *//*holder.TextView_msg.setGravity(Gravity.RIGHT);*//*
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.linearLayout_destinamtion.setVisibility(View.INVISIBLE);
             holder.TextView_msg.setBackgroundResource(R.drawable.rightbubble);
@@ -104,7 +106,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.TextView_msg.setBackgroundResource(R.drawable.leftbubble);
             holder.TextView_msg.setTextSize(20);
             holder.linearLayout_main.setGravity(Gravity.LEFT);
-        }
+        }*/
     }
 
     // Return the size of your dataset (invoked by the layout manager)
