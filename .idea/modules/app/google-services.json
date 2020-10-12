@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1029474915081",
+    "firebase_url": "https://pengtok-7c344.firebaseio.com",
+    "project_id": "pengtok-7c344",
+    "storage_bucket": "pengtok-7c344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029474915081:android:6c4b56c6126b6513edb9d8",
+        "android_client_info": {
+          "package_name": "com.example.pengtok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029474915081-s6je2n17qt3h2j7pt4ilqp4vu2v49tqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pengtok",
+            "certificate_hash": "a6d992b2f809abcb93809d056fea6162471c5309"
+          }
+        },
+        {
+          "client_id": "1029474915081-4afcs7kthok8hdjfq909h68bnavllvu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8g4mD7sKjNhRBK6QukpimNxXzMAuUioQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029474915081-4afcs7kthok8hdjfq909h68bnavllvu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
