@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -72,25 +71,16 @@ public class SignUpActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (email.getText().toString() == null || TextUtils.isEmpty(email.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "이메일을 입력해주세요.", Toast.LENGTH_LONG).show();
-                    return;
-                }else if(name.getText().toString() == null || TextUtils.isEmpty(name.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_LONG).show();
-                    return;
-                }else if(password.getText().toString() == null || TextUtils.isEmpty(password.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요.", Toast.LENGTH_LONG).show();
+                if (email.getText().toString() == null || name.getText().toString() == null || password.getText().toString() == null) {
                     return;
                 }
 
                 if(imageUrl != null) {
-                    Toast.makeText(getApplicationContext(), "프로필 사진이 지정한 사진으로 저장되었습니다.", Toast.LENGTH_LONG).show();
-                    onBackPressed();
 
                 }else {
                     Toast.makeText(getApplicationContext(),"프로필 사진은 기본 이미지로 저장되었습니다.",Toast.LENGTH_LONG).show();
                     imageUrl = Uri.parse("android.resource://"+getPackageName()+"/"+R.drawable.loading_icon);
-                    onBackPressed();
+
                 }
 
 
@@ -113,6 +103,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         //Log.d("userName", name.getText().toString());
                                         userModel.profileImageUrl = task.getResult().getStorage().getDownloadUrl().toString();;
                                         //Log.d("ImageUrl", task.getResult().getStorage().getDownloadUrl().toString());
+                                        userModel.uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel);
 
