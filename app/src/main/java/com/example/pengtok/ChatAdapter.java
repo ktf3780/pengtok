@@ -93,8 +93,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
 
         Log.d("채팅확인", chat.toString());
         //내가 보낸 메세지
-        /*    if (chat.getDestinationUid().equals(this.destinationUid)) {
-         *//*holder.TextView_msg.setGravity(Gravity.RIGHT);*//*
+    /*    if (chat.getDestinationUid().equals(this.destinationUid)) {
+            *//*holder.TextView_msg.setGravity(Gravity.RIGHT);*//*
             holder.TextView_nickname.setVisibility(View.INVISIBLE);
             holder.linearLayout_destinamtion.setVisibility(View.INVISIBLE);
             holder.TextView_msg.setBackgroundResource(R.drawable.rightbubble);

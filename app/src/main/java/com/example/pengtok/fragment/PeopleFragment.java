@@ -86,7 +86,7 @@ public class PeopleFragment extends Fragment {
             ((CustomViewHolder)holder).textView.setText(userModels.get(position).userName);
 
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), ChatActivity.class);
